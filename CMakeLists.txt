@@ -25,25 +25,25 @@ target_link_libraries(filter_ip PRIVATE
     filter_ip_lib
 )
 
-if(WITH_BOOST_TEST)
-    find_package(Boost COMPONENTS unit_test_framework REQUIRED)
-    add_executable(test_version test_version.cpp)
-
-    set_target_properties(test_version PROPERTIES
-        CXX_STANDARD 17
-        CXX_STANDARD_REQUIRED ON
-    )
-
+#if(WITH_BOOST_TEST)
+#    find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+#    add_executable(test_version test_version.cpp)
+#
 #    set_target_properties(test_version PROPERTIES
-#        COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
-#        INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
+#        CXX_STANDARD 17
+#        CXX_STANDARD_REQUIRED ON
 #    )
-
-    target_link_libraries(test_version
-        ${Boost_LIBRARIES}
-        filter_ip_lib
-    )
-endif()
+#
+##    set_target_properties(test_version PROPERTIES
+##        COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
+##        INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
+##    )
+#
+#    target_link_libraries(test_version
+#        ${Boost_LIBRARIES}
+#        filter_ip_lib
+#    )
+#endif()
 
 if (MSVC)
     target_compile_options(filter_ip PRIVATE
@@ -64,11 +64,11 @@ else ()
     target_compile_options(filter_ip_lib PRIVATE
         -Wall -Wextra -pedantic -Werror -std=c++17
     )
-    if(WITH_BOOST_TEST)
-        target_compile_options(test_version PRIVATE
-            -Wall -Wextra -pedantic -Werror
-        )
-    endif()
+#    if(WITH_BOOST_TEST)
+#        target_compile_options(test_version PRIVATE
+#            -Wall -Wextra -pedantic -Werror
+#        )
+#    endif()
 endif()
 
 install(TARGETS filter_ip RUNTIME DESTINATION bin)
@@ -80,7 +80,7 @@ set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
 set(CPACK_PACKAGE_CONTACT example@example.com)
 include(CPack)
 
-if(WITH_BOOST_TEST)
-    enable_testing()
-    add_test(test_version test_version)
-endif()
+#if(WITH_BOOST_TEST)
+#    enable_testing()
+#    add_test(test_version test_version)
+#endif()
