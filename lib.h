@@ -2,37 +2,35 @@
 
 #include "ip.h"
 
-#include <vector>
-
-//int process();
+#include <forward_list>
 
 /**
  * Парсит поток ввода и наполняет список валидными IP
- * @param vec
+ * @param lst
  */
-void parse_from_input(std::vector<IP> &vec);
+void parse_from_input(std::forward_list<IP> &lst);
 
 /**
  * Производит сортировку списка в обратном порядке
- * @param vec
+ * @param lst
  */
-void sort_desc(std::vector<IP> &vec);
+void sort_desc(std::forward_list<IP> &lst);
 
 /**
  * Производит сортировку списка в прямом порядке
- * @param vec
+ * @param lst
  */
-void sort_asc(std::vector<IP> &vec);
+void sort_asc(std::forward_list<IP> &lst);
 
 /**
  * Печатает список элементов, для которых функция вернула true
- * @param vec
+ * @param lst
  */
-void print_vec(std::vector<IP> &vec);
+void print_lst(std::forward_list<IP> &lst);
 
 /**
  * Печатает список элементов, для которых функция вернула true
- * @param vec
+ * @param lst
  */
 void
-print_vec(std::vector<IP> &vec, bool (*matches)(const IP &, const IP &, uint8_t), const IP &condition, uint8_t mask);
+print_lst(std::forward_list<IP> &lst, bool (*matches)(const IP &, const IP &, uint8_t), const IP &condition, uint8_t mask);
