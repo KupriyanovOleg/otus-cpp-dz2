@@ -15,8 +15,6 @@ void parse_from_input(std::forward_list<IP> &lst) {
         if (auto ip = IP(line.substr(0, stop)); ip.is_valid())
             iter = lst.emplace_after( iter, ip );
     }
-    if( lst.begin() != lst.end() )
-        std::cout <<"not null!\n";
 }
 
 /**
